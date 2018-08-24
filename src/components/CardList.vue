@@ -4,6 +4,8 @@
       <Flashcard
         :key="currentCard.id"
         v-bind="currentCard"
+        @prevSwipe="prev"
+        @nextSwipe="next"
       />
     </transition>
     <GlobalEvents

@@ -1,5 +1,11 @@
 <template>
-  <div class="flashcard" @click="flip">
+  <VueTouch
+    tag="div"
+    class="flashcard"
+    @click="flip"
+    @swipeleft="$emit('nextSwipe')"
+    @swipeRight="$emit('prevSwipe')"
+  >
     <div
       :class="backsideUp ? 'flip-container flipped' : 'flip-container'"
       :style="computedHeight"
@@ -16,7 +22,7 @@
     <GlobalEvents
       @keydown.space.prevent="flip"
     />
-  </div>
+  </VueTouch>
 </template>
 
 <script lang="ts">
@@ -64,6 +70,9 @@ export default Vue.extend({
   methods: {
     flip() {
       this.backsideUp = !this.backsideUp;
+    },
+    leftPls() {
+      debugger;
     },
   },
 });

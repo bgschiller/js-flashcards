@@ -33,8 +33,8 @@ console.log(obj);
     back: `
 { a: 1, b: 2 }
 // objCopy is a shallow copy of obj
-// the spread operator copied all top-level keys
-// and values into objCopy.
+// the spread operator copied all top-level
+// keys and values into objCopy.
 // changes to objCopy do not affect obj
     `,
     tag: 'spread',
