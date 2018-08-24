@@ -72,9 +72,6 @@ export default Vue.extend({
     flip() {
       this.backsideUp = !this.backsideUp;
     },
-    leftPls() {
-      debugger;
-    },
   },
 });
 </script>

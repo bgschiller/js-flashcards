@@ -9,16 +9,15 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "@types/highlight.js": "^9.12.3",
-    "@types/marked": "^0.4.1",
-    "gh-pages": "^1.2.0",
     "highlight.js": "^9.12.0",
-    "marked": "^0.5.0",
     "vue": "^2.5.17",
     "vue-global-events": "^1.0.3",
     "vue-touch": "^2.0.0-beta.4"
   },
   "devDependencies": {
+    "gh-pages": "^1.2.0",
+    "@types/highlight.js": "^9.12.3",
+    "@types/marked": "^0.4.1",
     "@vue/cli-plugin-babel": "^3.0.1",
     "@vue/cli-plugin-eslint": "^3.0.1",
     "@vue/cli-plugin-typescript": "^3.0.1",
