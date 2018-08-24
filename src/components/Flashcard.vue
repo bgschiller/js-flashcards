@@ -3,6 +3,7 @@
     tag="div"
     class="flashcard"
     @click="flip"
+    @tap="flip"
     @swipeleft="$emit('nextSwipe')"
     @swipeRight="$emit('prevSwipe')"
   >

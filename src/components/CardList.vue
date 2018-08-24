@@ -27,7 +27,7 @@ export default Vue.extend({
     return {
       cards,
       currentCardIx: 0,
-      direction: "left",
+      direction: "slide-left",
     };
   },
   components: {
@@ -79,7 +79,7 @@ export default Vue.extend({
 .slide-right-enter-active {
   animation: slide-in-from-left 0.3s;
 }
-.slide-right-leave-active {
+.lide-right-leave-acstive {
   animation: slide-out-to-right 0.3s;
 }
 
