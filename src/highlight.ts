@@ -1,5 +1,8 @@
-import { highlight } from 'highlight.js';
+import hljs from 'highlight.js/lib/highlight.js';
+import javascript from 'highlight.js/lib/languages/javascript';
+
+hljs.registerLanguage('javascript', javascript);
 
 export default function(code: string) {
-  return highlight('js', code, true).value;
+  return hljs.highlight('javascript', code, true).value;
 }
