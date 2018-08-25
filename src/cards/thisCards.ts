@@ -205,4 +205,111 @@ undefined
 // will be undefined.
     `,
   },
+  {
+    front:
+`function whatIsThis() {
+  console.log(this);
+}
+
+var whatNow = whatIsThis.bind(24);
+whatNow();
+    `,
+    back:
+`24
+// calling '.bind()' on a function
+// creates a new function with
+// 'this' set to the provided value.
+// Once bound in this way, 'this'
+// cannot be overridden.
+`
+  },
+  {
+    front:
+`function whatIsThis() {
+  console.log(this);
+}
+var whatNow = whatIsThis.bind(24);
+whatIsThis();
+`,
+    back:
+`Window
+// 'whatIsThis.bind(24)' creates and
+// returns a new function. It doesn't
+// affect the original function.
+`
+  },
+  {
+    front:
+`function whatIsThis() {
+  console.log(this);
+}
+var whatNow = whatIsThis.bind(24);
+whatNow.call(18);
+`,
+  back:
+`
+24
+// Once set using '.bind()',
+// 'this' cannot be overwritten.
+`
+  },
+  {
+      front:
+  `function whatIsThis() {
+    console.log(this);
+  }
+  var whatNow = whatIsThis
+    .bind(24)
+    .bind(44);
+  whatNow();
+  `,
+    back:
+  `
+  24
+  // Once set using '.bind()',
+  // 'this' cannot be overwritten.
+  `
+  },
+  {
+      front:
+`const func = () => {
+  console.log(this);
+}
+func.call(33);
+  `,
+    back:
+  `
+Window
+// fat-arrow functions have their
+// 'this' context bound at the time
+// they are defined. In this case,
+// it is like we had written
+// const func = (function() {
+//   console.log(this);
+// }.bind(this));
+  `
+  },
+  {
+    front:
+`function setup() {
+  const inner = () => {
+    console.log(this);
+  };
+  return inner;
+}
+const func = setup.call(54);
+}
+func();
+`,
+  back:
+`
+54
+// fat-arrow functions have their
+// 'this' context bound at the time
+// they are created. In this case,
+// setup is .call'd with a context
+// of 54, so 'this' is 54 when the
+// inner function is defined, and
+`
+  },
 ];
