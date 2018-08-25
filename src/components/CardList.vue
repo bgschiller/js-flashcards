@@ -18,6 +18,7 @@
 <script lang="ts">
 import GlobalEvents from "vue-global-events";
 import cards from "@/cards";
+import { shuffled } from "@/utils";
 import Flashcard from "./Flashcard.vue";
 
 import Vue from "vue";
@@ -42,7 +43,12 @@ export default Vue.extend({
   methods: {
     next() {
       this.direction = "slide-left";
-      this.currentCardIx = (this.currentCardIx + 1) % this.cards.length;
+      if (this.currentCardIx === this.cards.length - 1) {
+        this.cards = shuffled(this.cards);
+        this.currentCardIx = 0;
+      } else {
+        this.currentCardIx = this.currentCardIx + 1;
+      }
     },
     prev() {
       this.direction = "slide-right";
