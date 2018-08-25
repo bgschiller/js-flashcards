@@ -5,7 +5,7 @@
     @click="flip"
     @tap="flip"
     @swipeleft="$emit('nextSwipe')"
-    @swipeRight="$emit('prevSwipe')"
+    @swiperight="$emit('prevSwipe')"
   >
     <div
       :class="backsideUp ? 'flip-container flipped' : 'flip-container'"
@@ -27,6 +27,7 @@
 </template>
 
 <script lang="ts">
+import debounce from "lodash.debounce";
 import highlight from "@/highlight";
 import GlobalEvents from "vue-global-events";
 import Vue from "vue";
@@ -45,6 +46,7 @@ export default Vue.extend({
   data() {
     return {
       backsideUp: false,
+      pageWidth: window.innerWidth,
     };
   },
   computed: {
@@ -55,13 +57,15 @@ export default Vue.extend({
       return highlight(this.back);
     },
     height(): number {
+      const lineHeight = this.pageWidth > 500 ? 21 : 16;
+      const topBottomPadding = this.pageWidth > 500 ? 40 : 20;
       return (
-        21 *
+        lineHeight *
           Math.max(
             this.front.split("\n").length,
             this.back.split("\n").length,
           ) +
-        40
+        topBottomPadding
       );
     },
     computedHeight(): object {
@@ -72,6 +76,15 @@ export default Vue.extend({
     flip() {
       this.backsideUp = !this.backsideUp;
     },
+    updatePageWidth: debounce(function(this: any) {
+      this.pageWidth = window.innerWidth;
+    }, 30),
+  },
+  mounted() {
+    window.addEventListener("resize", this.updatePageWidth);
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.updatePageWidth);
   },
 });
 </script>
@@ -83,6 +96,9 @@ export default Vue.extend({
   text-align: left;
   font-size: 18px;
   padding: 2px 16px;
+  @media screen and (max-width: 500px) {
+    font-size: 15px;
+  }
 
   pre {
     margin: 0;
@@ -99,6 +115,7 @@ export default Vue.extend({
   .front,
   .back {
     width: 500px;
+    max-width: 92vw;
   }
 
   /* flip speed goes here */

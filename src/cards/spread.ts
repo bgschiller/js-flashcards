@@ -71,13 +71,15 @@ console.log(together);
 var east = {
   lobsters: 3,
   peaches: 5,
-  apples: 10, // apples in the east
+  apples: 10,
+  // apples in the east
 };
 
 var west = {
   salmon: 5,
   blueberries: 18,
-  apples: 20, // apples in the west
+  apples: 20,
+  // apples in the west
 };
 
 var together = {
@@ -132,8 +134,8 @@ console.log(juntos);
   },
   {
     front: `
-var first = [ 'tomato', 'potato' ];
-var second = [ 'cabbage', 'radish' ];
+var first = ['tomato', 'potato'];
+var second = ['cabbage', 'radish'];
 var together = [
   ...first,
   'zucchini',
@@ -151,7 +153,9 @@ console.log(together);
   {
     front: `
 var solo = [ 1, 2, 3 ];
-var again = [ ...solo, ...solo, ...solo ];
+var again = [
+  ...solo, ...solo, ...solo,
+];
 console.log(again);
     `,
     back: `
@@ -193,7 +197,9 @@ args is [[1, 2, 3], [4, 5, 6]]
   },
   {
     front: `
-function print_spread_args(first, ...rest) {
+function print_spread_args(
+  first, ...rest
+) {
   console.log(
     'first is', first,
     'rest is', rest,
@@ -207,7 +213,9 @@ first is 1 rest is [2, 3, 4]
   },
   {
     front: `
-function print_spread_args(first, ...middle, last) {
+function print_spread_args(
+  first, ...middle, last
+) {
   console.log(
     'first is', first,
     'middle is', middle,
@@ -217,7 +225,8 @@ function print_spread_args(first, ...middle, last) {
 print_spread_args(1, 2, 3, 4);
     `,
     back: `
-SyntaxError: Rest parameter must be last formal parameter
+SyntaxError: Rest parameter must be
+last formal parameter
     `,
   },
 ];

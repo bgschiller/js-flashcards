@@ -35,6 +35,9 @@ export default Vue.extend({
   align-items: center;
   .contents {
     padding: 20px;
+    @media screen and (max-width: 500px) {
+      padding: 10px;
+    }
   }
 }
 </style>
