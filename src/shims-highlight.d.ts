@@ -4,6 +4,8 @@ declare module "highlight.js/lib/highlight.js" {
 }
 
 declare module "highlight.js/lib/languages/javascript" {
-  var x: any;
+  import { IModeBase, HLJSStatic } from 'highlight.js';
+  import hljs from 'highlight.js/lib/languages/javascript';
+  var x: (hljs?: HLJSStatic) => IModeBase;
   export default x;
 }
