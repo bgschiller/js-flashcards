@@ -85,7 +85,7 @@ export default Vue.extend({
 .slide-right-enter-active {
   animation: slide-in-from-left 0.3s;
 }
-.lide-right-leave-acstive {
+.slide-right-leave-active {
   animation: slide-out-to-right 0.3s;
 }
 
